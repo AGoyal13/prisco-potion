@@ -1,0 +1,74 @@
+<section class="page-hero network-hero" aria-label="Network page hero">
+  <div class="net-orb net-orb-1" aria-hidden="true"></div>
+  <div class="net-orb net-orb-2" aria-hidden="true"></div>
+  <div class="container page-hero-inner">
+    <span class="glass-pill animate-fade-in">Our Network</span>
+    <h1 class="display-xl animate-fade-up stagger-2">
+      Built to move,<br><em class="text-gradient-gold">built to scale.</em>
+    </h1>
+    <p class="body-lg animate-fade-up stagger-3" style="max-width: 52ch;">
+      From our own distillery in South Delhi to distribution across India and importation from
+      six continents — Prisco Potion's operational network is designed for reach and reliability.
+    </p>
+  </div>
+</section>
+
+<!-- Network Quadrants -->
+<section class="section section-dark" aria-label="Network pillars">
+  <div class="container">
+    <app-section-header
+      title="Four pillars of our"
+      titleAccent="operational network."
+      align="center"
+      [scrollReveal]="true"
+    ></app-section-header>
+
+    <div class="network-grid">
+      <div
+        class="network-node glass"
+        *ngFor="let node of nodes; let i = index"
+        [scrollReveal]="true"
+        [revealDelay]="i * 100"
+      >
+        <div class="node-icon" [innerHTML]="safeIcon(node.icon)" aria-hidden="true"></div>
+        <h3 class="node-title">{{ node.title }}</h3>
+        <p class="node-desc">{{ node.description }}</p>
+        <div class="node-stats">
+          <div class="node-stat" *ngFor="let stat of node.stats">
+            <span class="stat-value">{{ stat.value }}</span>
+            <span class="stat-label">{{ stat.label }}</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Subsidiary Section -->
+<section class="section section-surface" aria-labelledby="subsidiary-title">
+  <div class="container">
+    <div class="subsidiary-wrap" [scrollReveal]="true">
+      <div class="subsidiary-badge glass-pill-gold" aria-label="Subsidiary">Subsidiary</div>
+      <div class="subsidiary-card glass">
+        <div class="subsidiary-header">
+          <div class="sub-mark" aria-hidden="true">ESB</div>
+          <div>
+            <h2 id="subsidiary-title" class="sub-name">{{ subsidiary.name }}</h2>
+            <p class="sub-role glass-pill-neutral">{{ subsidiary.role }}</p>
+          </div>
+        </div>
+        <p class="sub-desc">{{ subsidiary.description }}</p>
+        <ul class="sub-highlights" aria-label="Key highlights">
+          <li
+            *ngFor="let h of subsidiary.highlights; let i = index"
+            [scrollReveal]="true"
+            [revealDelay]="i * 60"
+          >
+            <span class="highlight-dot" aria-hidden="true"></span>
+            {{ h }}
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

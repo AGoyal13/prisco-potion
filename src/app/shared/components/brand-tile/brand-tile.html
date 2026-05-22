@@ -1,0 +1,28 @@
+<div
+  class="brand-tile"
+  (click)="tileClick.emit(brand)"
+  (keydown.enter)="tileClick.emit(brand)"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'View ' + brand.name + ' details'"
+>
+  <div class="brand-image" [style.background]="brand.logoBg || ''">
+    <app-image-loader
+      *ngIf="brand.logoSrc"
+      [src]="brand.logoSrc"
+      [alt]="brand.name"
+      aspectRatio="3/4"
+      borderRadius="var(--radius-lg) var(--radius-lg) 0 0"
+      [objectFit]="brand.logoObjectFit || 'contain'"
+      [cssFilter]="brand.logoInvert ? 'brightness(0) invert(1)' : ''"
+      [bgColor]="brand.logoBg || ''"
+    ></app-image-loader>
+    <div *ngIf="!brand.logoSrc" class="brand-initials-wrap">
+      <span class="brand-initials">{{ initials }}</span>
+    </div>
+  </div>
+  <div class="brand-info">
+    <span class="brand-name">{{ brand.name }}</span>
+    <span class="brand-origin">{{ brand.origin }} · {{ brand.type }}</span>
+  </div>
+</div>

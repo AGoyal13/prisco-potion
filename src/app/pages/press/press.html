@@ -1,0 +1,78 @@
+<section class="page-hero press-hero" aria-label="Press page hero">
+  <div class="press-orb press-orb-1" aria-hidden="true"></div>
+  <div class="container page-hero-inner">
+    <span class="glass-pill animate-fade-in">Press & Media</span>
+    <h1 class="display-xl animate-fade-up stagger-2">
+      In the world's<br><em class="text-gradient-gold">conversation.</em>
+    </h1>
+    <p class="body-lg animate-fade-up stagger-3" style="max-width: 50ch;">
+      Coverage, features, and mentions of Prisco Potion across editorial, trade, and
+      community platforms. New additions coming soon.
+    </p>
+  </div>
+</section>
+
+<!-- Coming Soon Banner -->
+<div class="coming-soon-banner" [scrollReveal]="true" aria-label="Coming soon notice">
+  <div class="container">
+    <div class="csb-inner glass">
+      <span class="csb-icon" aria-hidden="true">🔔</span>
+      <div class="csb-text">
+        <strong>This section is live and growing.</strong>
+        Press features, media mentions, and community acknowledgements will be published here as they appear.
+        Check back soon — or reach out to us for media enquiries.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Press Grid -->
+<section class="section section-dark" aria-label="Press coverage">
+  <div class="container">
+    <app-section-header
+      label="Coverage"
+      title="Where we've been"
+      titleAccent="featured & mentioned."
+      align="left"
+      [scrollReveal]="true"
+    ></app-section-header>
+
+    <div class="press-grid">
+      <article
+        class="press-card glass"
+        *ngFor="let item of pressItems; let i = index"
+        [scrollReveal]="true"
+        [revealDelay]="i * 80"
+        [class.placeholder]="item.placeholder"
+        aria-label="{{ item.title }}"
+      >
+        <div class="press-card-top">
+          <span class="press-type-badge glass-pill-neutral">
+            {{ typeIcon[item.type] }} {{ typeLabel[item.type] }}
+          </span>
+          <span class="press-source">{{ item.source }}</span>
+        </div>
+        <h3 class="press-title">{{ item.title }}</h3>
+        <p class="press-excerpt">{{ item.excerpt }}</p>
+        <div class="press-card-footer" *ngIf="item.date || item.url">
+          <span class="press-date" *ngIf="item.date">{{ item.date }}</span>
+          <a
+            *ngIf="item.url"
+            [href]="item.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-ghost press-link"
+          >Read →</a>
+        </div>
+        <div class="placeholder-badge" *ngIf="item.placeholder" aria-hidden="true">
+          Coming Soon
+        </div>
+      </article>
+    </div>
+
+    <p class="press-note" [scrollReveal]="true">
+      For media enquiries, interview requests, or to share coverage of Prisco Potion,
+      contact us at <a href="mailto:info@priscopotion.com" class="press-email">info@priscopotion.com</a>
+    </p>
+  </div>
+</section>

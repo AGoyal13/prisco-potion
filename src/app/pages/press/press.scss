@@ -1,0 +1,192 @@
+.press-hero {
+  position: relative;
+  padding-block: var(--space-12) var(--space-16);
+  background: var(--color-bg);
+  overflow: hidden;
+  min-height: 42svh;
+  display: flex;
+  align-items: center;
+}
+
+.press-orb {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.press-orb-1 {
+  width: 560px;
+  height: 560px;
+  top: -180px;
+  right: -120px;
+  background: radial-gradient(circle, rgba(192, 39, 45, 0.46) 0%, rgba(192, 39, 45, 0.16) 45%, transparent 70%);
+  filter: blur(56px);
+  animation: float-orb 3s ease-in-out infinite;
+
+  @media (max-width: 499px) {
+    width: 280px;
+    height: 280px;
+    top: -80px;
+    right: -60px;
+  }
+}
+
+.page-hero-inner {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+  position: relative;
+  z-index: 1;
+}
+
+// ── Coming Soon Banner ──────────────────────────────────────
+.coming-soon-banner {
+  padding-block: var(--space-5);
+  background: var(--color-bg);
+}
+
+.csb-inner {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-4);
+  padding: var(--space-5) var(--space-6);
+  border-radius: var(--radius-lg);
+  border-left: 3px solid var(--color-gold);
+}
+
+.csb-icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+  line-height: 1.2;
+}
+
+.csb-text {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+
+  strong {
+    color: var(--color-text-primary);
+    display: block;
+    margin-bottom: var(--space-1);
+  }
+}
+
+// ── Press Grid ──────────────────────────────────────────────
+.press-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-5);
+
+  @media (min-width: 640px) { grid-template-columns: repeat(2, 1fr); }
+  @media (min-width: 1024px) { grid-template-columns: repeat(3, 1fr); }
+}
+
+.press-card {
+  padding: var(--space-6);
+  border-radius: var(--radius-lg);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  position: relative;
+  overflow: hidden;
+  transition:
+    transform var(--duration-slow) var(--ease-out),
+    border-color var(--duration-base) var(--ease-out);
+
+  &:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-glass-border-accent);
+  }
+
+  &.placeholder {
+    opacity: 0.7;
+  }
+}
+
+.press-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.press-type-badge {
+  font-size: var(--text-xs);
+}
+
+.press-source {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-left: auto;
+}
+
+.press-title {
+  font-family: var(--font-display);
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
+  line-height: var(--leading-snug);
+  flex: 1;
+}
+
+.press-excerpt {
+  font-size: var(--text-sm);
+  color: var(--color-text-secondary);
+  line-height: var(--leading-normal);
+}
+
+.press-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--color-glass-border);
+}
+
+.press-date {
+  font-size: var(--text-xs);
+  color: var(--color-text-muted);
+}
+
+.press-link {
+  font-size: var(--text-xs);
+  padding: var(--space-1) var(--space-3);
+}
+
+.placeholder-badge {
+  position: absolute;
+  top: var(--space-3);
+  right: var(--space-3);
+  font-size: 10px;
+  font-weight: var(--font-semibold);
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--color-text-muted);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid var(--color-glass-border);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+}
+
+// ── Press Note ──────────────────────────────────────────────
+.press-note {
+  text-align: center;
+  font-size: var(--text-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--space-10);
+  line-height: var(--leading-normal);
+}
+
+.press-email {
+  color: var(--color-gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(201, 151, 58, 0.3);
+  transition: border-color var(--duration-base) var(--ease-out);
+
+  &:hover { border-color: var(--color-gold); }
+}

@@ -1,0 +1,163 @@
+<!-- ── Page Hero ───────────────────────────────────────────────── -->
+<section class="page-hero about-hero" aria-label="About page hero">
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+  <div class="container page-hero-inner">
+    <span class="glass-pill animate-fade-in">Our Story</span>
+    <h1 class="display-xl animate-fade-up stagger-2">
+      A passion for <em class="text-gradient-crimson">exceptional</em> beverages.
+    </h1>
+    <p class="body-lg animate-fade-up stagger-3" style="max-width: 54ch;">
+      Prisco Potion Pvt. Ltd. was founded with a singular mission: bring the world's finest
+      spirits and beverages to the Indian market, while crafting world-class labels of our own.
+    </p>
+  </div>
+</section>
+
+<!-- ── About Story ─────────────────────────────────────────────── -->
+<section class="section section-dark" aria-labelledby="story-title">
+  <div class="container">
+    <div class="story-grid">
+      <div class="story-text" [scrollReveal]="true">
+        <app-section-header
+          label="Who We Are"
+          title="More than a distributor"
+          titleAccent="— a curator."
+          subtitle="We are a multi-vertical enterprise operating across manufacturing, importation, and distribution in the premium beverages space."
+          align="left"
+        ></app-section-header>
+
+        <div class="story-paras">
+          <p>
+            Based in South Delhi's Okhla Industrial Area, Prisco Potion Pvt. Ltd. has grown
+            from a focused import business into a full-spectrum spirits company. We own our
+            manufacturing through <strong>Exquisite Spirit and Beverages Pvt. Ltd.</strong>,
+            our in-house distillery, producing beers and whiskeys under our own labels.
+          </p>
+          <p>
+            Our international division curates and brings to India some of the world's most
+            exciting spirits — from Tigre Blanc to VIVIR Tequila, Hepple Gin to Ignite —
+            making premium international beverages accessible to the Indian connoisseur.
+          </p>
+          <p>
+            Distribution is the backbone of our reach. Our network spans Delhi and continues
+            to expand into new cities and markets, ensuring our portfolio is available wherever
+            quality is valued.
+          </p>
+        </div>
+      </div>
+
+      <div class="story-aside" [scrollReveal]="true" [revealDelay]="150" [revealDirection]="'left'">
+        <div class="aside-panel">
+          <span class="aside-eyebrow">At a Glance</span>
+          <div class="aside-stats">
+            <div class="aside-stat" *ngFor="let s of [
+              { n: '2020', l: 'Founded' },
+              { n: '6+', l: 'Own Brand Labels' },
+              { n: '9+', l: 'International Brands' },
+              { n: 'Delhi', l: 'Headquarters' }
+            ]">
+              <span class="aside-num">{{ s.n }}</span>
+              <span class="aside-lbl">{{ s.l }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Vision ──────────────────────────────────────────────────── -->
+<section class="section section-surface vision-section" aria-labelledby="vision-title">
+  <div class="vision-glow" aria-hidden="true"></div>
+  <div class="container">
+    <div class="vision-inner" [scrollReveal]="true">
+      <span class="glass-pill">Our Vision</span>
+      <blockquote class="vision-quote">
+        <p id="vision-title">
+          To be India's most trusted name in premium spirits — a company that bridges the world's
+          finest producers with the Indian consumer, while championing quality, authenticity,
+          and innovation at every step.
+        </p>
+      </blockquote>
+      <p class="vision-sub body-base">
+        We envision a future where every sip tells a story — of craft, of provenance,
+        of the people who made it, and the ones who chose it.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ── Core Values ─────────────────────────────────────────────── -->
+<section class="section section-dark" aria-labelledby="values-title">
+  <div class="container">
+    <app-section-header
+      id="values-title"
+      title="The principles we pour"
+      titleAccent="ourselves into."
+      align="center"
+      [scrollReveal]="true"
+    ></app-section-header>
+
+    <div class="grid-2">
+      <app-value-card
+        *ngFor="let v of values; let i = index"
+        [icon]="v.icon"
+        [title]="v.title"
+        [description]="v.description"
+        [scrollReveal]="true"
+        [revealDelay]="i * 80"
+      ></app-value-card>
+    </div>
+  </div>
+</section>
+
+<!-- ── Director ────────────────────────────────────────────────── -->
+<section class="section section-surface" aria-labelledby="director-title">
+  <div class="container">
+    <app-section-header
+      title="Meet our"
+      titleAccent="Director."
+      align="center"
+      [scrollReveal]="true"
+    ></app-section-header>
+
+    <div class="director-wrap">
+      <div class="director-card glass" [scrollReveal]="true">
+        <div class="director-avatar" aria-label="Shourya Juneja">
+          <img
+            *ngIf="directorImageSrc"
+            class="avatar-img"
+            [src]="directorImageSrc"
+            alt="Shourya Juneja"
+          >
+          <span *ngIf="!directorImageSrc" class="avatar-initials">SJ</span>
+        </div>
+        <div class="director-info">
+          <div class="director-badge glass-pill">Founder & Managing Director</div>
+          <h2 id="director-title" class="director-name">Shourya Juneja</h2>
+          <p class="director-bio">
+            Shourya founded Prisco Potion with a vision to redefine how India experiences
+            premium spirits. With deep expertise in distribution, brand building, and the
+            international beverages landscape, he leads the company's strategy, partnerships,
+            and growth initiatives — with the belief that great drinks bring people together.
+          </p>
+          <div class="director-actions">
+            <a
+              href="https://www.linkedin.com/company/priscopotion/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="btn-ghost director-btn"
+              aria-label="Connect on LinkedIn"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+              </svg>
+              Connect on LinkedIn
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

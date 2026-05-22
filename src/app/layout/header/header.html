@@ -1,0 +1,94 @@
+<header class="nav-shell" [class.scrolled]="isScrolled" role="banner">
+  <div class="nav-inner">
+
+    <!-- Logo -->
+    <a routerLink="/" class="nav-logo" (click)="closeMenu()" aria-label="Prisco Potion Home">
+      <div class="logo-mark">
+        <img src="assets/prisco-logo.png" alt="Prisco Potion logo" class="logo-img">
+      </div>
+      <div class="logo-text">
+        <span class="logo-primary">Prisco</span>
+        <span class="logo-secondary">Potion</span>
+      </div>
+    </a>
+
+    <!-- Desktop Nav -->
+    <nav class="nav-links" role="navigation" aria-label="Main navigation">
+      <a
+        *ngFor="let link of navLinks"
+        [routerLink]="link.path"
+        routerLinkActive="active"
+        class="nav-link"
+      >
+        {{ link.label }}
+      </a>
+      <a routerLink="/contact" class="btn-primary nav-cta">Get in Touch</a>
+    </nav>
+
+    <!-- Hamburger -->
+    <button
+      class="hamburger"
+      [class.open]="menuOpen"
+      (click)="toggleMenu()"
+      [attr.aria-expanded]="menuOpen"
+      aria-label="Toggle navigation menu"
+      aria-controls="mobile-menu"
+    >
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile Drawer -->
+<div
+  class="mobile-overlay"
+  [class.open]="menuOpen"
+  (click)="closeMenu()"
+  aria-hidden="true"
+></div>
+
+<nav
+  id="mobile-menu"
+  class="mobile-menu"
+  [class.open]="menuOpen"
+  role="navigation"
+  aria-label="Mobile navigation"
+>
+  <div class="mobile-menu-header">
+    <a routerLink="/" class="nav-logo" (click)="closeMenu()">
+      <div class="logo-mark"><img src="assets/prisco-logo.png" alt="Prisco Potion logo" class="logo-img"></div>
+      <div class="logo-text">
+        <span class="logo-primary">Prisco</span>
+        <span class="logo-secondary">Potion</span>
+      </div>
+    </a>
+    <button class="close-btn" (click)="closeMenu()" aria-label="Close menu">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <path d="M15 5L5 15M5 5l10 10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="mobile-links">
+    <a
+      *ngFor="let link of navLinks; let i = index"
+      [routerLink]="link.path"
+      routerLinkActive="active"
+      class="mobile-link"
+      [class]="'stagger-' + (i + 1)"
+      (click)="closeMenu()"
+    >
+      <span class="mobile-link-label">{{ link.label }}</span>
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+        <path d="M6 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+
+  <div class="mobile-footer">
+    <p class="mobile-tagline">We think outside the bottle</p>
+    <a routerLink="/contact" class="btn-primary" (click)="closeMenu()">Get in Touch</a>
+  </div>
+</nav>

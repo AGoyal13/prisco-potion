@@ -1,0 +1,130 @@
+<!-- ── Hero ──────────────────────────────────────────────────── -->
+<section class="hero" aria-label="Hero">
+  <!-- Video background -->
+  <video
+    class="hero-video"
+    src="assets/products/video/video.mp4"
+    autoplay
+    [muted]="true"
+    loop
+    playsinline
+    aria-hidden="true"
+  ></video>
+  <div class="hero-video-overlay" aria-hidden="true"></div>
+
+  <!-- Ambient orbs -->
+  <div class="orb orb-1" aria-hidden="true"></div>
+  <div class="orb orb-2" aria-hidden="true"></div>
+  <div class="orb orb-3" aria-hidden="true"></div>
+
+  <div class="container hero-inner">
+    <div class="hero-content">
+      <span class="glass-pill animate-fade-in stagger-1" role="text">
+        ✦ &nbsp; Premier Spirits &amp; Beverages
+      </span>
+
+      <h1 class="hero-headline animate-fade-up stagger-2">
+        We Think<br>
+        <em class="headline-accent">Outside</em><br>
+        The Bottle.
+      </h1>
+
+      <p class="hero-sub animate-fade-up stagger-3">
+        Prisco Potion Pvt. Ltd. — manufacturers, importers, and distributors of premium
+        wines, craft spirits, and quality beers. Based in New Delhi, serving India.
+      </p>
+
+      <div class="hero-actions animate-fade-up stagger-4">
+        <a routerLink="/products" class="btn-primary">Explore Products</a>
+        <a routerLink="/about" class="btn-ghost">Our Story</a>
+      </div>
+    </div>
+
+    <!-- Decorative brand mark -->
+    <div class="hero-brand-mark animate-scale-in stagger-3" aria-hidden="true">
+      <div class="brand-logo-wrap">
+        <img src="assets/prisco-logo.png" alt="Prisco Potion logo" class="brand-logo-img">
+      </div>
+      <!-- <span class="brand-name-text">Prisco Potion</span> -->
+      <span class="brand-sub-text">Since 2020</span>
+    </div>
+  </div>
+
+  <!-- Scroll cue -->
+  <div class="scroll-cue animate-fade-in stagger-6" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</section>
+
+<!-- ── Ticker ─────────────────────────────────────────────────── -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <span class="ticker-item" *ngFor="let t of [
+      'MACARENA', 'FINGERPRINT', 'CROSSBONES', 'DAMELO', 'ROMAN KINGS', 'ROMAN WARRIOR',
+      'VIVIR TEQUILA', 'HEPPLE GIN', 'TIGRE BLANC', 'IGNITE', 'MOONSHADOW',
+      'MACARENA', 'FINGERPRINT', 'CROSSBONES', 'DAMELO', 'ROMAN KINGS', 'ROMAN WARRIOR',
+      'VIVIR TEQUILA', 'HEPPLE GIN', 'TIGRE BLANC', 'IGNITE', 'MOONSHADOW'
+    ]">{{ t }} &nbsp;·&nbsp; </span>
+  </div>
+</div>
+
+<!-- ── Quick Access ────────────────────────────────────────────── -->
+<section class="section section-dark quick-access" aria-label="Quick access">
+  <div class="container max-w-n">
+    <div class="qa-grid">
+      <a
+        *ngFor="let link of quickLinks; let i = index"
+        [routerLink]="link.path"
+        class="qa-card"
+        [scrollReveal]="true"
+        [revealDelay]="i * 100"
+      >
+        <app-glass-card [hoverable]="true" padding="var(--space-6)">
+          <div class="qa-inner">
+            <div class="qa-orb" [ngClass]="'qa-orb-' + (i + 1)" aria-hidden="true"></div>
+            <div class="qa-text">
+              <h2 class="qa-title">{{ link.title }}</h2>
+              <p class="qa-desc">{{ link.desc }}</p>
+            </div>
+            <span class="qa-cta">{{ link.label }} &rarr;</span>
+          </div>
+        </app-glass-card>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── About Teaser ────────────────────────────────────────────── -->
+<section class="section section-surface about-teaser" aria-labelledby="home-about-title">
+  <div class="container max-w-n">
+    <div class="teaser-grid">
+      <div class="teaser-content" [scrollReveal]="true">
+        <span class="glass-pill-gold">Est. 2020 · New Delhi</span>
+        <h2 id="home-about-title" class="display-md" style="margin-top: var(--space-5);">
+          Curating the finest spirits, <em>one pour at a time.</em>
+        </h2>
+        <p class="body-lg" style="margin-top: var(--space-4);">
+          Founded on a passion for exceptional beverages, Prisco Potion Pvt. Ltd. has
+          grown into a multi-vertical enterprise — manufacturing its own labels, importing
+          exclusive international brands, and distributing across India's most dynamic markets.
+        </p>
+        <a routerLink="/about" class="btn-ghost" style="margin-top: var(--space-6); width: fit-content;">
+          Read Our Story
+        </a>
+      </div>
+      <div class="teaser-stats" [scrollReveal]="true" [revealDelay]="150">
+        <div class="stat-card" *ngFor="let s of [
+          { value: '6+', label: 'Own Labels', sub: 'Beer & Whiskey' },
+          { value: '9+', label: 'International Brands', sub: 'Curated Globally' },
+          { value: 'Pan-Delhi', label: 'Distribution', sub: '& Expanding' },
+          { value: '1', label: 'Distillery', sub: 'Exquisite Spirit & Beverages' }
+        ]">
+          <span class="stat-value">{{ s.value }}</span>
+          <span class="stat-label">{{ s.label }}</span>
+          <span class="stat-sub">{{ s.sub }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

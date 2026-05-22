@@ -1,0 +1,30 @@
+<article
+  class="product-card"
+  [class.gold]="product.accent === 'gold'"
+  (click)="cardClick.emit(product)"
+  (keydown.enter)="cardClick.emit(product)"
+  role="button"
+  tabindex="0"
+  [attr.aria-label]="'View ' + product.name + ' details'"
+>
+  <div class="product-image">
+    <app-image-loader
+      [src]="product.imageSrc"
+      [alt]="product.name"
+      aspectRatio="3/4"
+      borderRadius="var(--radius-lg) var(--radius-lg) 0 0"
+      [objectFit]="imageObjectFit"
+    ></app-image-loader>
+    <span class="product-category glass-pill">{{ product.category }}</span>
+    <div class="product-expand-hint" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M15 3h6v6M9 21H3v-6M21 3l-7 7M3 21l7-7"/>
+      </svg>
+    </div>
+  </div>
+  <div class="product-info">
+    <h3 class="product-name">{{ product.name }}</h3>
+    <p class="product-tagline">{{ product.tagline }}</p>
+    <p class="product-desc body-sm">{{ product.description }}</p>
+  </div>
+</article>

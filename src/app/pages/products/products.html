@@ -1,0 +1,164 @@
+<!-- Fixed page background video — switches between beer and whisky -->
+<video
+  *ngIf="activeTab() === 'beer'"
+  class="products-bg-video"
+  src="assets/products/beer/products.mp4"
+  autoplay
+  [muted]="true"
+  loop
+  playsinline
+  aria-hidden="true"
+></video>
+<video
+  *ngIf="activeTab() === 'whiskey'"
+  class="products-bg-video"
+  src="assets/products/beer/whisky-compressed.mp4"
+  autoplay
+  [muted]="true"
+  loop
+  playsinline
+  aria-hidden="true"
+></video>
+<div class="products-bg-overlay" aria-hidden="true"></div>
+
+<section class="page-hero products-hero" aria-label="Products page hero">
+  <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+  <div class="scroll-cue animate-fade-in stagger-6" aria-hidden="true">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+  <div class="container page-hero-inner">
+    <span class="glass-pill animate-fade-in">Our Products</span>
+    <h1 class="display-xl animate-fade-up stagger-2">
+      Crafted with <em class="text-gradient-gold">intention.</em>
+    </h1>
+    <p class="body-lg animate-fade-up stagger-3" style="max-width: 50ch;">
+      Our own labels — beers and whiskeys conceived, crafted, and curated by Prisco Potion
+      through our in-house distillery, Exquisite Spirit and Beverages Pvt. Ltd.
+    </p>
+  </div>
+</section>
+
+<section class="section video-bg-mode products-section" aria-label="Products catalogue">
+  <div class="container">
+
+    <!-- Tab Switcher -->
+    <div class="tab-switcher" role="tablist" aria-label="Product categories" [scrollReveal]="true">
+      <button
+        role="tab"
+        [attr.aria-selected]="activeTab() === 'beer'"
+        class="tab-btn"
+        [class.active]="activeTab() === 'beer'"
+        (click)="setTab('beer')"
+      >
+        <span class="tab-icon">🍺</span>
+        <span>Beer</span>
+        <span class="tab-count">{{ beers.length }}</span>
+      </button>
+      <button
+        role="tab"
+        [attr.aria-selected]="activeTab() === 'whiskey'"
+        class="tab-btn"
+        [class.active]="activeTab() === 'whiskey'"
+        (click)="setTab('whiskey')"
+      >
+        <span class="tab-icon">🥃</span>
+        <span>Whiskey</span>
+        <span class="tab-count">{{ whiskeys.length }}</span>
+      </button>
+    </div>
+
+    <!-- Category Label -->
+    <div class="category-header" [scrollReveal]="true" [revealDelay]="100">
+      <ng-container *ngIf="activeTab() === 'beer'">
+        <h2 class="display-md">Our <em class="text-gradient-gold">Beer</em> Collection</h2>
+        <p class="body-base">
+          Three distinct beers, each with its own personality. Brewed for Indian tastes, crafted with global standards.
+        </p>
+      </ng-container>
+      <ng-container *ngIf="activeTab() === 'whiskey'">
+        <h2 class="display-md">Our <em class="text-gradient-crimson">Whiskey</em> Collection</h2>
+        <p class="body-base">
+          From the smooth to the bold — our whiskeys carry the mark of Prisco Potion's dedication to craft.
+        </p>
+      </ng-container>
+    </div>
+
+    <!-- Products Grid -->
+    <div class="products-grid">
+      <app-product-card
+        *ngFor="let product of activeProducts; let i = index"
+        [product]="product"
+        [imageObjectFit]="activeTab() === 'whiskey' ? 'contain' : 'cover'"
+        [scrollReveal]="true"
+        [revealDelay]="i * 120"
+        (cardClick)="openModal($event)"
+      ></app-product-card>
+    </div>
+
+    <!-- Distillery Note -->
+    <div class="distillery-note glass" [scrollReveal]="true">
+      <!-- <div class="note-icon" aria-hidden="true">🏭</div> -->
+      <div class="note-content">
+        <h3>Manufactured by Exquisite Spirit &amp; Beverages Pvt. Ltd.</h3>
+        <p>
+          Our in-house distillery and brewing facility, Exquisite Spirit and Beverages Pvt. Ltd.,
+          is where every own-label product comes to life. Stringent quality control, artisanal
+          processes, and a relentless pursuit of excellence define everything we produce.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Product Modal ──────────────────────────────────────────── -->
+<div
+  class="product-modal-overlay"
+  *ngIf="selectedProduct()"
+  (click)="closeModal()"
+  role="dialog"
+  aria-modal="true"
+  [attr.aria-label]="selectedProduct()!.name + ' details'"
+>
+  <div class="product-modal" [class.video-modal]="selectedProduct()!.videoSrc" (click)="$event.stopPropagation()">
+
+    <button class="modal-close" (click)="closeModal()" aria-label="Close modal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"/>
+        <line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+
+    <!-- Video modal -->
+    <ng-container *ngIf="selectedProduct()!.videoSrc">
+      <video
+        class="modal-video"
+        [src]="selectedProduct()!.videoSrc"
+        autoplay
+        [muted]="true"
+        playsinline
+        controls
+        loop
+      ></video>
+    </ng-container>
+
+    <!-- Image + info modal -->
+    <ng-container *ngIf="!selectedProduct()!.videoSrc">
+      <div class="modal-image-wrap">
+        <img
+          class="modal-img"
+          [src]="selectedProduct()!.imageSrc"
+          [alt]="selectedProduct()!.name"
+          [style.object-fit]="activeTab() === 'whiskey' ? 'contain' : 'cover'"
+        >
+      </div>
+      <div class="modal-info" [class.gold]="selectedProduct()!.accent === 'gold'">
+        <span class="glass-pill modal-category">{{ selectedProduct()!.category }}</span>
+        <h2 class="modal-name">{{ selectedProduct()!.name }}</h2>
+        <p class="modal-tagline">{{ selectedProduct()!.tagline }}</p>
+        <p class="modal-desc">{{ selectedProduct()!.description }}</p>
+      </div>
+    </ng-container>
+
+  </div>
+</div>

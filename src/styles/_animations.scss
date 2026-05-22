@@ -1,0 +1,105 @@
+// ================================================================
+// Keyframe Animations — Prisco Potion
+// ================================================================
+
+// ── Entrance ─────────────────────────────────────────────────
+@keyframes fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes fade-up {
+  from { opacity: 0; transform: translateY(28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-down {
+  from { opacity: 0; transform: translateY(-28px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fade-left {
+  from { opacity: 0; transform: translateX(28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes fade-right {
+  from { opacity: 0; transform: translateX(-28px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.92); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+// ── Ambient ───────────────────────────────────────────────────
+@keyframes float-orb {
+  0%, 100% { transform: translate(0, 0) scale(1); }
+  33%       { transform: translate(24px, -24px) scale(1.04); }
+  66%       { transform: translate(-16px, 16px) scale(0.96); }
+}
+
+@keyframes float-subtle {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 0 0 var(--color-accent-glow); }
+  50%       { box-shadow: 0 0 40px 8px var(--color-accent-glow); }
+}
+
+@keyframes orb-pulse {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50%       { transform: translate(-50%, -50%) scale(1.28); }
+}
+
+// ── Shimmer (skeleton loading) ─────────────────────────────────
+@keyframes shimmer {
+  from { background-position: -400px 0; }
+  to   { background-position:  400px 0; }
+}
+
+// ── Ticker / Scroll ────────────────────────────────────────────
+@keyframes ticker {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+// ── Stagger Helpers ────────────────────────────────────────────
+.stagger-1 { animation-delay: 100ms !important; }
+.stagger-2 { animation-delay: 200ms !important; }
+.stagger-3 { animation-delay: 300ms !important; }
+.stagger-4 { animation-delay: 400ms !important; }
+.stagger-5 { animation-delay: 500ms !important; }
+.stagger-6 { animation-delay: 600ms !important; }
+
+// ── Utility animation classes ──────────────────────────────────
+.animate-fade-up {
+  animation: fade-up var(--duration-slower) var(--ease-out) both;
+}
+
+.animate-fade-in {
+  animation: fade-in var(--duration-slower) var(--ease-out) both;
+}
+
+.animate-scale-in {
+  animation: scale-in var(--duration-slow) var(--ease-out) both;
+}
+
+// ── Reduced motion ─────────────────────────────────────────────
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

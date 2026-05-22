@@ -1,0 +1,13 @@
+<div class="img-wrap" [style.aspect-ratio]="aspectRatio" [style.border-radius]="borderRadius" [style.background]="bgColor || null">
+  <div class="img-skeleton" [class.hidden]="loaded" aria-hidden="true"></div>
+  <img
+    [src]="src"
+    [alt]="alt"
+    [class.visible]="loaded"
+    [style.object-fit]="objectFit"
+    [style.filter]="cssFilter"
+    (load)="onLoad()"
+    loading="lazy"
+    decoding="async"
+  />
+</div>

@@ -1,0 +1,11 @@
+<header class="section-header" [class]="'align-' + align">
+  <span class="section-label" *ngIf="label">{{ label }}</span>
+  <h2 class="section-title display-lg">
+    <ng-container *ngIf="!titleAccent">{{ title }}</ng-container>
+    <ng-container *ngIf="titleAccent">
+      {{ title }} <em class="title-accent">{{ titleAccent }}</em>
+    </ng-container>
+  </h2>
+  <p class="section-sub body-lg" *ngIf="subtitle">{{ subtitle }}</p>
+  <div class="section-divider" *ngIf="showDivider"></div>
+</header>
