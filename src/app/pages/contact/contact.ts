@@ -77,11 +77,26 @@ export class ContactComponent {
   onSubmit(): void {
     if (this.submitting()) return;
     this.submitting.set(true);
-    // Simulate async — replace with real API call
-    setTimeout(() => {
-      this.submitting.set(false);
-      this.submitted.set(true);
-    }, 1200);
+
+    const lines = [
+      '*New Enquiry — Prisco Potion*',
+      '',
+      `*Name:* ${this.form.name}`,
+      `*Email:* ${this.form.email}`,
+      this.form.phone ? `*Phone:* ${this.form.phone}` : null,
+      `*Subject:* ${this.form.subject}`,
+      '',
+      '*Message:*',
+      this.form.message,
+    ]
+      .filter((l): l is string => l !== null)
+      .join('\n');
+
+    const waUrl = `https://wa.me/919310517996?text=${encodeURIComponent(lines)}`;
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+
+    this.submitting.set(false);
+    this.submitted.set(true);
   }
 
   reset(): void {
