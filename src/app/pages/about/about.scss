@@ -258,7 +258,13 @@
   gap: var(--space-3);
 }
 
-.director-badge { align-self: flex-start; }
+.director-badge {
+  align-self: center;
+
+  @media (min-width: 640px) {
+    align-self: flex-start;
+  }
+}
 
 .director-name {
   font-family: var(--font-display);
