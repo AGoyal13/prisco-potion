@@ -6,7 +6,9 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "site:up": "ng build && npx wrangler deploy",
+    "site:down": "npx wrangler deploy --config wrangler.maintenance.jsonc"
   },
   "private": true,
   "packageManager": "npm@11.8.0",

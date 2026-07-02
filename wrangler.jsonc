@@ -1,6 +1,7 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "dry-block-0452",
+  "account_id": "7d2bf519b9f713829a2788c7b612b4e9",
   "compatibility_date": "2026-07-02",
   "assets": {
     "directory": "./dist/prisco-potion/browser",
