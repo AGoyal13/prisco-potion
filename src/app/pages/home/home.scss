@@ -18,6 +18,14 @@
   z-index: 0;
   pointer-events: none;
   opacity: 50%;
+
+  // Suppress native browser play-button overlay on iOS/Android
+  &::-webkit-media-controls,
+  &::-webkit-media-controls-panel,
+  &::-webkit-media-controls-start-playback-button {
+    display: none !important;
+    -webkit-appearance: none;
+  }
 }
 
 .hero-video-overlay {
