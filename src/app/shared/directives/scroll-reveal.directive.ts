@@ -1,4 +1,13 @@
-import { Directive, ElementRef, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  Input,
+  OnDestroy,
+  OnInit,
+  PLATFORM_ID,
+  inject,
+} from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 @Directive({
   selector: '[scrollReveal]',
@@ -11,11 +20,17 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
   @Input() revealDirection: 'up' | 'down' | 'left' | 'right' | 'fade' = 'up';
   @Input() revealThreshold = 0.12;
 
-  private observer!: IntersectionObserver;
+  private observer?: IntersectionObserver;
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
 
   constructor(private el: ElementRef<HTMLElement>) {}
 
   ngOnInit(): void {
+    // During prerender (no DOM / no IntersectionObserver) render content fully visible so the
+    // static HTML contains real, crawlable, visible content. The reveal animation runs on the
+    // client only, after hydration.
+    if (!this.isBrowser) return;
+
     const el = this.el.nativeElement;
     el.style.opacity = '0';
     el.style.transform = this.initialTransform();
@@ -30,7 +45,7 @@ export class ScrollRevealDirective implements OnInit, OnDestroy {
           if (entry.isIntersecting) {
             el.style.opacity = '1';
             el.style.transform = 'translate3d(0, 0, 0)';
-            this.observer.unobserve(el);
+            this.observer?.unobserve(el);
           }
         });
       },
