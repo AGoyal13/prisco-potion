@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "dry-block-0452",
+  "compatibility_date": "2026-07-02",
+  "assets": {
+    "directory": "./dist/prisco-potion/browser",
+    "html_handling": "drop-trailing-slash",
+    "not_found_handling": "none"
+  }
+}

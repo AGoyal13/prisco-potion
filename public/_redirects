@@ -1,5 +1,0 @@
-# Cloudflare Pages redirects — canonicalize to the apex domain (www -> apex).
-# NOTE: If your manual-upload path does not honor _redirects, enforce this instead
-# via a Cloudflare dashboard Redirect Rule (www.priscopotion.com/* -> https://priscopotion.com/$1, 301).
-https://www.priscopotion.com/*   https://priscopotion.com/:splat   301!
-http://www.priscopotion.com/*    https://priscopotion.com/:splat   301!
